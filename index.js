@@ -1,12 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const { query } = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 
-
-const express = require('express');
 
 
 //middleware
@@ -15,8 +13,6 @@ app.use(express.json());
 
 //user: user6
 //pass: PD6C7m8trWXK1XfT
-
-
 
 
 const uri = "mongodb+srv://user6:PD6C7m8trWXK1XfT@cluster0.ltjdg3f.mongodb.net/?retryWrites=true&w=majority";
