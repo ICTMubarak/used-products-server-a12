@@ -13,7 +13,6 @@ const express = require('express');
 app.use(cors());
 app.use(express.json());
 
-
 //user: user6
 //pass: PD6C7m8trWXK1XfT
 
@@ -24,19 +23,16 @@ const uri = "mongodb+srv://user6:PD6C7m8trWXK1XfT@cluster0.ltjdg3f.mongodb.net/?
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
-
 async function run(){
 
     try{
 
-         const serviceCollection = client.db('ServiceCollection').collection('services');
-         const reviewCollection = client.db('ServiceCollection').collection('reviews');
-  
+         const productCollection = client.db('ProductCollection').collection('Products');
 
          app.post('/addproduct', async(req, res) =>{
-             const service = req.body;
-             console.log(service); 
-             const result = await serviceCollection.insertOne(service);
+             const product = req.body;
+             console.log(product); 
+             const result = await productCollection.insertOne(product);
              res.send(result);
          })
 
