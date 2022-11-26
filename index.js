@@ -33,12 +33,24 @@ async function run(){
 
          app.get('/hp', async(req, res)=>{
             //const query = {};
-            const query = {};
+            const query = {
+                catagory:'HP',
+            };
             const cursor = productCollection.find(query);
             const hpProducts = await cursor.toArray();
             res.send(hpProducts);
 
-       })
+       });
+       app.get('/dell', async(req, res)=>{
+        //const query = {};
+        const query = {
+            catagory:'Dell',
+        };
+        const cursor = productCollection.find(query);
+        const hpProducts = await cursor.toArray();
+        res.send(hpProducts);
+
+   })
 
 
     }
