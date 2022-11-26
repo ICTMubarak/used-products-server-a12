@@ -14,7 +14,7 @@ app.use(express.json());
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ltjdg3f.mongodb.net/?retryWrites=true&w=majority`;
-console.log(uri);
+//console.log(uri);
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
@@ -29,7 +29,16 @@ async function run(){
              console.log(product); 
              const result = await productCollection.insertOne(product);
              res.send(result);
-         })
+         });
+
+         app.get('/hp', async(req, res)=>{
+            //const query = {};
+            const query = {};
+            const cursor = productCollection.find(query);
+            const hpProducts = await cursor.toArray();
+            res.send(hpProducts);
+
+       })
 
 
     }
