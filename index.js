@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config();
 const { query } = require('express');
 const app = express();
@@ -50,7 +50,25 @@ async function run(){
         const hpProducts = await cursor.toArray();
         res.send(hpProducts);
 
-   })
+   });
+   app.get('/acer', async(req, res)=>{
+    //const query = {};
+    const query = {
+        catagory:'Acer',
+    };
+    const cursor = productCollection.find(query);
+    const hpProducts = await cursor.toArray();
+    res.send(hpProducts);
+
+});
+
+app.get('/booking/:id', async(req, res) =>{
+    const id = req.params.id;
+    const query = { _id: ObjectId(id)}
+    const result = await productCollection.findOne(query);
+    res.send(result);
+})
+
 
 
     }
