@@ -48,6 +48,14 @@ async function run(){
 
        });
 
+       app.get('/allbuyers', async(req, res)=>{
+        const query = {};
+        const cursor = orderCollection.find(query);
+        const allBuyers = await cursor.toArray();
+        res.send(allBuyers);
+
+   });
+
          app.get('/hp', async(req, res)=>{
             const query = {
                 catagory:'HP',
