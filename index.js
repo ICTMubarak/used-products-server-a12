@@ -40,8 +40,15 @@ async function run(){
             res.send(result);
         });
 
+        app.get('/advertised', async(req, res)=>{
+            const query = {};
+            const cursor = productCollection.find(query);
+            const allProducts = await cursor.toArray();
+            res.send(allProducts);
+
+       });
+
          app.get('/hp', async(req, res)=>{
-            //const query = {};
             const query = {
                 catagory:'HP',
             };
@@ -51,7 +58,6 @@ async function run(){
 
        });
        app.get('/dell', async(req, res)=>{
-        //const query = {};
         const query = {
             catagory:'Dell',
         };
@@ -61,7 +67,6 @@ async function run(){
 
    });
    app.get('/acer', async(req, res)=>{
-    //const query = {};
     const query = {
         catagory:'Acer',
     };
